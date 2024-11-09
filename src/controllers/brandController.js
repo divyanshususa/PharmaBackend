@@ -11,4 +11,21 @@ const createBrand = async (req, res) => {
   }
 };
 
-export default { createBrand };
+const getAllBrands = async (req, res) => {
+    try {
+      const brands = await Brand.find();  // Fetch all brand records from MongoDB
+      if (brands.length === 0) {
+        return res.status(404).json({ message: "No brands found" });
+      }
+      res.status(200).json({
+        status: 200,
+        data: brands,
+        message: "Brands fetched successfully"
+      });
+    } catch (error) {
+      console.error("Error fetching brands:", error);
+      res.status(500).json({ message: "Error fetching brands", error });
+    }
+  };
+  
+export default { createBrand ,getAllBrands};

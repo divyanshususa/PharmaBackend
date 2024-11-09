@@ -10,4 +10,14 @@ const createDistributor = async (req, res) => {
   }
 };
 
-export default { createDistributor };
+const getAllDistributors = async (req, res) => {
+    try {
+      const distributors = await Distributor.find();  // Fetch all distributor records
+      res.status(200).json(new ApiResponse(200, distributors, "Distributors fetched successfully"));
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching distributors", error });
+    }
+  };
+  
+
+export default { createDistributor,getAllDistributors };
