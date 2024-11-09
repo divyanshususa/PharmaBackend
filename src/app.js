@@ -20,10 +20,15 @@ app.use(cookieParser());
 //routes import
  
 import userrouter from './routes/user.routes.js'
+import uploadcsv from './routes/UploadData.js'
+
+
 
 //routes declaration
 
 app.use('/api/v1/users',userrouter)
+
+app.use('/api/v1/uploadcsv',uploadcsv)
 
 
 
