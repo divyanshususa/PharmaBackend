@@ -10,7 +10,7 @@ router.route("/register").post(
         { name: "Gstin", maxCount: 1 }
     ]),
     registerUser
-);
+); 
 
 router.route("/login").post(loginUser);
 

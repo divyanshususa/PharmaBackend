@@ -16,6 +16,7 @@ const uploadOnCloudinary = async (localFilePath) => {
             folder: 'pharmasignup'  // Optional: Specify the folder for organization
         });
         console.log("File uploaded to Cloudinary:", uploadResponse.url);
+        fs.unlinkSync(localFilePath)
         return uploadResponse;
     } catch (error) {
         console.error('Error uploading to Cloudinary:', error);

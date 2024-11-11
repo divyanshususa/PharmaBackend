@@ -6,6 +6,11 @@ import bcrypt from "bcrypt"
 
 
 const userSchema = new mongoose.Schema({
+    profile: {
+        type: String,
+        required: true,
+    },
+    
     name: {
         type: String,
         required: true,

@@ -8,9 +8,9 @@ import { ApiResponse } from "../utility/ApiResponse.js";
 const registerUser = asyncHandler(async (req, res) => {
     console.log("Incoming request body:", req.body);
 
-    const { name, contact, email, address, password } = req.body;
+    const { name, contact, email, address, password,profile } = req.body;
 
-    if (!name || !contact || !email || !address || !password) {
+    if (!name || !contact || !email || !address || !password || !profile) {
         throw new ApiError(400, "All fields (name, contact, email, address, password) are required");
     }
 
@@ -40,7 +40,8 @@ const registerUser = asyncHandler(async (req, res) => {
         address,
         licenceImage: licenceUpload.url,
         gstinImage: gstinUpload.url,
-        password
+        password,
+        profile
     });
 
     const createdUser = await User.findById(user._id).select("-password -refreshToken");
